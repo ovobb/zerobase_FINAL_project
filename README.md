@@ -8,7 +8,7 @@
 1. [프로젝트 소개](#1-프로젝트-소개)
 2. [EDA](#2-eda)
 3. [매출예측 모델](#3-매출예측-모델)
-4. [RFM&고객세분화](#4-RFM&고객세분화)
+4. [RFM 및 고객세분화](#4-RFM 및 고객세분화)
 5. [가치제공](#5-가치제공)
 
 
@@ -197,7 +197,7 @@ XGBRegressor보다는 LSTM의 RMSE가 더 낮았고 단일보다 배송과 리�
 
 ----
 
-## 4. RFM&고객세분화
+## 4. RFM 및 고객세분화
 
 ### 4-1. Segmentation 방법 1
 - R(recency), F(frequency), M(monetary)에 가중치를 부여하지 않고 score 생성 후 Segmentation 진행
@@ -207,12 +207,32 @@ XGBRegressor보다는 LSTM의 RMSE가 더 낮았고 단일보다 배송과 리�
 
 ### 4-2. Segmentation 방법 2
 - RFM score = a * R(Recency) + b * F(Frequency) + c * M(Monetary)
-- a,b,c 최적의 가중치를 직접 구해서 RFM_SCORE 생성
-- R,F,M데이터를 가지고 군집화 모델링(k-menas) -> 6개의 군집이 적당함
+  - a,b,c 최적의 가중치를 직접 구해서 RFM_SCORE 생성
+1) Normalization 된 R,F,M 데이터들을 가지고 군집화 모델링
+      - k-means 사용
+      - clustering 나누는 기준 KELbowVIsualizer 통해 확인(6집단으로 확인)
 
 ![스크린샷 2023-06-05 오전 12 36 05](https://github.com/ovobb/zerobase_FINAL_project/assets/123061697/84c0939a-85c4-4f0f-aa87-e2ae18bde5f5)
 
+2) 각 집단별로 CV를 최소로 하는 가중치를 구하여 RFM_SCORE 생성
+3) RFM_SCORE로 등급화
+  - 6등급 : Bronze, Silver, Gold, Royal, Vip, VVip
 
+![스크린샷 2023-06-05 오후 5 25 18](https://github.com/ovobb/zerobase_FINAL_project/assets/123061697/966d8b41-ab40-4ed1-bf5a-e2dc3849a9a2)
 
+----
 
+## 5. 가치제공
+
+- 매출 예상을 통해 매출전략 수립이 가능하게 한다
+- RFM으로 고객을 Segmentation 함으로써 고객 타겟팅이 가능하게 한다
+
+---
+#### TEAM
+- 고지현
+- 김정빈
+- 박건우
+- 윤정옥
+- 정기중
+- 
 
