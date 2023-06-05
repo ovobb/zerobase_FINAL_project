@@ -175,10 +175,10 @@ top4까지를 살펴보면 1~2가지 카테고리가 높은 비중을 차지하�
 - Train : 2016년 10월 ~ 2018년 3월
 - Test : 2018년 3월 ~ 2018년 9월
 - 단일 모델
-  - 종류 : XGBRegressor, LSTM
+  - 종류 : XGBRegressor(n_estimators=110), LSTM
   - feature : price
 - 다중 모델 
-  - 종류 : XGBRegressor, LSTM
+  - 종류 : XGBRegressor(n_estimators=100), LSTM
   - feature : price, delivery_score, review_score
     - delivery_score : 실제 배송일, 배송 예정일의 차이를 통해 0~5점까지 점수를 부여
     - review_score : review에 대한 점수를 부여
